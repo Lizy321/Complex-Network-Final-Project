@@ -9,9 +9,9 @@ import time
 #   The goal is to construct maximum connected network with the same nodes in each layer of network
 #===================================================================================================
 
-c2a = np.loadtxt('/Users/lizy/Downloads/Q3/Complex_Network/project/c2a_HALF.txt')
-a2q = np.loadtxt('/Users/lizy/Downloads/Q3/Complex_Network/project/a2q_HALF.txt')
-c2q = np.loadtxt('/Users/lizy/Downloads/Q3/Complex_Network/project/c2q_HALF.txt')
+c2a = np.loadtxt('/Users/lizy/Downloads/Q3/Complex_Network/project/raw_network_data/c2a_HALF.txt')
+a2q = np.loadtxt('/Users/lizy/Downloads/Q3/Complex_Network/project/raw_network_data/a2q_HALF.txt')
+c2q = np.loadtxt('/Users/lizy/Downloads/Q3/Complex_Network/project/raw_network_data/c2q_HALF.txt')
 
 # construct the maximum subgraph in each layer
 def max_subgraph(data):
@@ -101,3 +101,26 @@ write_file(cent_c2q,'c2q')
 write_file(cent_c2a,'c2a')
 
 # Correlation between these centralities can be implmented in the following
+
+start = c2a[0,2]
+a_year = 3600*24*365
+two_y = 2*a_year
+
+csa_1y = c2a[c2a[:,2]<(start+a_year)]
+np.savetxt('/Users/lizy/Downloads/Q3/Complex_Network/project/c2a_1y.txt',csa_1y,fmt='%d')
+
+csq_1y = c2q[c2q[:,2]<(c2q[0,2]+a_year)]
+np.savetxt('/Users/lizy/Downloads/Q3/Complex_Network/project/c2q_1y.txt',csq_1y,fmt='%d')
+
+asq_1y = a2q[a2q[:,2]<(a2q[0,2]+a_year)]
+np.savetxt('/Users/lizy/Downloads/Q3/Complex_Network/project/a2q_1y.txt',asq_1y,fmt='%d')
+
+csa_2y = c2a[c2a[:,2]<(start+two_y)]
+np.savetxt('/Users/lizy/Downloads/Q3/Complex_Network/project/c2a_2y.txt',csa_2y,fmt='%d')
+
+csq_2y = c2q[c2q[:,2]<(c2q[0,2]+two_y)]
+np.savetxt('/Users/lizy/Downloads/Q3/Complex_Network/project/c2q_2y.txt',csq_2y,fmt='%d')
+
+asq_2y = a2q[a2q[:,2]<(a2q[0,2]+two_y)]
+np.savetxt('/Users/lizy/Downloads/Q3/Complex_Network/project/a2q_2y.txt',asq_2y,fmt='%d')
+
